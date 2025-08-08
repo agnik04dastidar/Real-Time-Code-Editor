@@ -13,7 +13,7 @@ dotenv.config();
 const app = express();
 const server = http.createServer(app);
 
-const url = `https://render-hosting-se2b.onrender.com`;
+const url = `https://real-time-code-editor-7n13.onrender.com`;
 const interval = 30000;
 
 function reloadWebsite() {

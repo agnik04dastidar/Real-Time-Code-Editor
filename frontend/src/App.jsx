@@ -10,7 +10,7 @@ import VideoCall from "./components/VideoCall";
 import { v4 as uuid } from "uuid";
 import logo from "./assets/web-logo.png";
 
-const socket = io("http://localhost:5000");
+const socket = io("https://real-time-code-editor-7n13.onrender.com");
 
 const App = () => {
   const [joined, setJoined] = useState(false);
