@@ -1,0 +1,28 @@
+
+
+.video-call-container {
+  width: 100%;
+  height: 100%;
+}
+
+.meeting-container {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  align-items: stretch;
+  height: 50px;
+  width: 50px;
+    pointer-events: auto;
+}
+
+/* Ensure ZegoCloud UI takes full height */
+.meeting-container > div {
+  height: 10% !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .video-call-container {
+    height: 100vh;
+  }
+}
