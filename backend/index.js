@@ -4,7 +4,7 @@ import { Server } from "socket.io";
 import path from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
-import axios from "axios";
+
 import dotenv from "dotenv";
 import cors from "cors";
 
@@ -13,21 +13,7 @@ dotenv.config();
 const app = express();
 const server = http.createServer(app);
 
-const url = `https://real-time-code-editor-7n13.onrender.com`;
-const interval = 30000;
 
-function reloadWebsite() {
-  axios
-    .get(url)
-    .then((response) => {
-      console.log("website reloded");
-    })
-    .catch((error) => {
-      console.error(`Error : ${error.message}`);
-    });
-}
-
-setInterval(reloadWebsite, interval);
 
 
 

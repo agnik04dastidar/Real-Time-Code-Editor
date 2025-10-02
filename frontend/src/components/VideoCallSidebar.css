@@ -1,11 +1,11 @@
 /* Video Call Sidebar - positioned on the right side */
 .video-call-sidebar {
   position: fixed;
-  top: 550px;
+  top: 650px;
   right: 0;
   width: 320px;
   height: 100vh;
-  background-color: #1e1e1e;
+
   color: white;
   box-shadow: -2px 0 5px rgba(0,0,0,0.5);
   transform: translateX(100%);
@@ -13,6 +13,13 @@
   display: flex;
   flex-direction: column;
   z-index: 1001;
+  background-color: #ffffff;
+  border: 2px solid #333;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
 }
 
 .video-call-sidebar.open {
