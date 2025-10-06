@@ -69,10 +69,10 @@ const App = () => {
     socket.on("outputUpdate", (out) => setOutput(out));
 
     // Video call synchronization
-    socket.on("toggleVideoCall", ({ visible, roomId: callRoomId }) => {
+    socket.on("toggleVideoCall", ({ visible, roomId }) => {
       setShowVideoCall(visible);
-      if (callRoomId) {
-        setVideoCallRoomId(callRoomId);
+      if (roomId) {
+        setVideoCallRoomId(roomId);
       }
     });
 
@@ -186,17 +186,15 @@ const App = () => {
   const toggleVideoCall = () => {
     if (roomId) {
       const newVisibility = !showVideoCall;
-      const callRoomId = `video-${roomId}`;
       
       setShowVideoCall(newVisibility);
-      setVideoCallRoomId(callRoomId);
+      setVideoCallRoomId(roomId);
       setSidebarOpen(true); // Open sidebar when video call starts
 
       // Emit toggleVideoCall with correct keys to avoid overwriting roomId
       socket.emit("toggleVideoCall", { 
         roomId: roomId, 
-        visible: newVisibility, 
-        callRoomId: callRoomId 
+        visible: newVisibility
       });
     }
   };
@@ -282,11 +280,12 @@ const App = () => {
                 
               boxShadow: '0 0 10px rgba(0,0,0,0.3)' 
             }}>
-              <VideoCallSidebar 
-                roomId={videoCallRoomId} 
-                userId={userName} 
-                isOpen={true} 
-                onToggleOpen={setSidebarOpen} 
+              <VideoCallSidebar
+                roomId={videoCallRoomId}
+                userId={userName}
+                isOpen={true}
+                onToggleOpen={setSidebarOpen}
+                socket={socket}
               />
             </div>
           )}

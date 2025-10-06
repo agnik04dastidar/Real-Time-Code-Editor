@@ -23,8 +23,8 @@ export function getUrlParams(
   return new URLSearchParams(urlStr);
 }
 
-export default function VideoCall() {
-  const roomID = getUrlParams().get('roomID') || randomID(5);
+export default function VideoCall({ roomId, userId, socket }) {
+  const roomID = roomId || getUrlParams().get('roomID') || randomID(5);
   const meetingContainerRef = useRef(null);
   const zpRef = useRef(null);
 
@@ -82,6 +82,11 @@ export default function VideoCall() {
           showTurnOffRemoteMicrophoneButton: true,
           showRemoveUserButton: true,
         });
+
+        // Emit joinVideoCall for participant tracking
+        if (socket) {
+          socket.emit('joinVideoCall', { roomId: roomID, userName: userId });
+        }
       } catch (error) {
         console.error('Failed to initialize ZegoCloud meeting:', error);
       }

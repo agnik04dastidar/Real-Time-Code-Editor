@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import VideoCall from './VideoCall';
 import './VideoCallSidebar.css';
 
-const VideoCallSidebar = ({ roomId, userId, isOpen, onToggleOpen }) => {
+const VideoCallSidebar = ({ roomId, userId, isOpen, onToggleOpen, socket }) => {
   const [sidebarWidth, setSidebarWidth] = useState(320);
   const [isResizing, setIsResizing] = useState(false);
   const resizeRef = useRef(null);
@@ -61,7 +61,7 @@ const VideoCallSidebar = ({ roomId, userId, isOpen, onToggleOpen }) => {
         </div>
         
         <div className="sidebar-content">
-          <VideoCall roomId={roomId} userId={userId} />
+          <VideoCall roomId={roomId} userId={userId} socket={socket} />
         </div>
         
         <div 
